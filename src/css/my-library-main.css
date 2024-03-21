@@ -1,0 +1,162 @@
+.film-container-library {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.film-container-library h1 {
+  display: none;
+}
+
+.film-list {
+  margin-top: 20px;
+  padding-left: 0px;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 20px;
+}
+
+.movie-item {
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-item p {
+  font-size: 12px;
+  color: var(--orange);
+}
+
+.movie-item img{
+  cursor: pointer;
+}
+
+.film-container-library .main-rating {
+  margin-left: 5px;
+  width: 36px;
+  height: 16px;
+  display: flex;
+  justify-content: center;
+  color: white;
+  background-color: var(--orange);
+  border: 1px solid var(--orange);
+  border-radius: 5px;
+}
+
+.content-wrapper {
+  display: flex;
+  align-items: flex-end;
+}
+
+.movie-item h2 {
+  margin-top: 10px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+}
+
+.movie-item img {
+  border-radius: 5px;
+  display: flex;
+  width: 280px;
+  height: 408px;
+  transition: 0.5s ease-out;
+}
+.movie-item img:hover {
+  transform: scale(1.02);
+}
+.movie-item img:hover::after {
+  transition: all;
+}
+
+.pagination {
+  margin-left: auto;
+  margin-right: auto;
+  height: 40px;
+  margin-top: 60px;
+  margin-bottom: 50px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.page-button {
+  background-color: white;
+  border: none;
+  height: 40px;
+  width: 40px;
+  border-radius: 5px;
+}
+
+.active {
+  background-color: var(--orange);
+  color: white;
+}
+.first-button,
+.last-button {
+  background-color: var(--light_grey);
+}
+
+@media (min-width: 768px) {
+  .film-list {
+    margin-top: 60px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    row-gap: 32px;
+  }
+
+  .movie-item h2 {
+    margin-top: 8px;
+  }
+
+  .movie-item img {
+    width: 336px;
+    height: 455px;
+  }
+
+  .content-wrapper {
+    align-items: center;
+  }
+
+  .movie-item {
+    width: 336px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .film-list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    row-gap: 32px;
+  }
+  .movie-item h2 {
+    margin-top: 12px;
+    font-size: 20px;
+  }
+
+  .movie-item p {
+    font-size: 20px;
+  }
+
+  .movie-item img {
+    height: 574px;
+    width: 395px;
+  }
+  .movie-item {
+    width: 395px;
+  }
+
+  .film-container-library .main-rating {
+    margin-left: 5px;
+    width: 40px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+  }
+
+  .content-wrapper {
+    display: flex;
+  }
+}

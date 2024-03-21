@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css?family=Anton');
+
+.loader {
+  position: relative;
+  z-index: 1;
+  padding-top: 25px;
+  padding-bottom: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loader_modal_container {
+  background-color: #ffffff7e;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  backdrop-filter: blur(5px);
+  transition: backdrop-filter 100ms;
+}
+
+.loader_modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  padding-top: 25px;
+  padding-bottom: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.loader__text {
+  margin: 5px auto;
+  color: #3d314a;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: Anton, sans-serif;
+}
+
+.loader__filmstrip {
+  width: 56px;
+  height: 70px;
+  background: #3d314a;
+  position: relative;
+}
+
+.loader__filmstrip:before,
+.loader__filmstrip:after {
+  content: '';
+  position: absolute;
+  height: 120%;
+  border-left: 5px dashed #ffffff;
+  animation: roll 20ms infinite;
+}
+
+.loader__filmstrip:before {
+  left: 5px;
+}
+
+.loader__filmstrip:after {
+  right: 5px;
+}
+
+@keyframes roll {
+  0% {
+    top: 0px;
+  }
+  100% {
+    top: -15px;
+  }
+}

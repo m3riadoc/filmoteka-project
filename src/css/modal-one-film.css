@@ -1,0 +1,707 @@
+.movie-backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(46, 47, 66, 0.4);
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.movie-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 280px;
+  height: 100%;
+  border-radius: 0px;
+  background: #fff;
+  cursor: default;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.modal-close-btn {
+  display: flex;
+  background: none;
+  fill: none;
+  stroke: none;
+  justify-content: center;
+  min-height: 24px;
+  min-width: 24px;
+  align-items: center;
+  position: absolute;
+  top: 8px;
+  padding: 0;
+  right: 8px;
+  z-index: 1;
+  cursor: pointer;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  border-radius: 25px;
+}
+
+.modal-close-btn:hover,
+.modal-close-btn:focus {
+  border-radius: 25px;
+}
+
+.modal-close-icon {
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1), transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  stroke-width: 2px;
+  background: none;
+  border-radius: 25px;
+}
+
+.modal-close-icon:hover,
+.modal-close-icon:active {
+  border-radius: 25px;
+  transform: rotate(90deg);
+}
+
+.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.movie-image {
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 5px;
+  width: 240px;
+  height: 357px;
+  margin-top: 36px;
+  margin-left: 20px;
+  object-fit: cover;
+}
+
+.movie-container {
+  width: 240px;
+  height: 512px;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.movie-title {
+  color: var(--pureblack);
+  text-align: left;
+  margin-bottom: 20px;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.172;
+  letter-spacing: 0em;
+  text-transform: uppercase;
+}
+
+.movie-description {
+  margin-right: 39px;
+}
+
+.movie-descr-values p {
+  margin-bottom: 8px;
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.33333;
+  letter-spacing: 0em;
+}
+
+.movie-average-rate {
+  background-color: #ff6b01;
+  width: 36px;
+  height: 16px;
+  justify-content: center;
+  color: white;
+  border-radius: 5px;
+  display: inline-flex;
+}
+
+.movie-votes {
+  background-color: #f7f7f7;
+  min-width: 3.5em;
+  height: 16px;
+  justify-content: center;
+  border-radius: 5px;
+  display: inline-flex;
+}
+
+.movie-descr {
+  font-family: 'Roboto', sans-serif;
+  width: 70px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33333;
+  color: #8c8c8c;
+  margin-bottom: 8px;
+}
+
+.movie-descr:last-child {
+  margin-bottom: 20px;
+}
+
+.movie-about h3 {
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #000000;
+  margin-bottom: 8px;
+}
+
+.movie-about-par {
+  width: 240px;
+  max-height: 260px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.66666;
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: left;
+}
+
+.modal-buttons button {
+  margin-right: 20px;
+  margin-bottom: 40px;
+}
+
+.modal-buttons button:last-child {
+  margin-right: 0;
+}
+
+.watched-button {
+  background-color: #fff;
+  color: #000;
+  display: flex;
+  align-items: center;
+  padding: 10px 10px;
+  transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 110px;
+  height: 44px;
+  justify-content: center;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33333;
+  text-transform: uppercase;
+  text-align: center;
+  border-radius: 5px;
+  border: solid 1px black;
+  cursor: pointer;
+}
+
+.watched-button:hover,
+.watched-button:focus {
+  background-color: #ff6b01;
+  color: #fff;
+  border: none;
+}
+
+.queue-button {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  padding: 10px 10px;
+  transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 110px;
+  height: 44px;
+  justify-content: center;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33333;
+  text-transform: uppercase;
+  text-align: center;
+  color: black;
+  border-radius: 5px;
+  border: solid 1px black;
+  fill: white;
+  cursor: pointer;
+}
+
+.queue-button:hover,
+.queue-button:focus {
+  background-color: #ff6b01;
+  color: white;
+  border: none;
+}
+
+.movie-details {
+  display: flex;
+}
+.movie-original-title {
+  text-transform: uppercase;
+}
+
+.remove-buttons {
+  justify-content: space-around;
+}
+
+@media (min-width: 768px) {
+  .movie-backdrop {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(46, 47, 66, 0.4);
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+      visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .movie-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 704px;
+    height: auto;
+    border-radius: 0px;
+    background: #fff;
+    cursor: default;
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: row;
+  }
+
+  .modal-close-btn {
+    display: flex;
+    background: none;
+    fill: #fff;
+    justify-content: center;
+    min-height: 24px;
+    min-width: 24px;
+    align-items: center;
+    position: absolute;
+    top: 15px;
+    padding: 0;
+    right: 14px;
+    z-index: 1;
+    cursor: pointer;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+      border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+  }
+
+  .modal-close-btn:hover,
+  .modal-close-btn:focus {
+    stroke: var(--orange);
+  }
+
+  .modal-close-icon {
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1),
+      transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    stroke-width: 2px;
+  }
+
+  .modal-close-icon:hover,
+  .modal-close-icon:active {
+    transform: rotate(90deg);
+  }
+
+  .is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .movie-image {
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 5px;
+    width: 264px;
+    height: 373.55px;
+    margin-left: 36px;
+    margin-top: 40px;
+  }
+
+  .movie-container {
+    width: 264px;
+    height: 512px;
+    margin-left: 68px;
+    margin-top: 40px;
+  }
+
+  .movie-title {
+    color: var(--pureblack);
+    text-align: left;
+    margin-bottom: 20px;
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.172;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+
+  .movie-descr {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33333;
+    color: #8c8c8c;
+    margin-bottom: 8px;
+  }
+
+  .movie-descr:last-child {
+    margin-bottom: 20px;
+  }
+
+  .movie-about-par {
+    width: 264px;
+    max-height: 236px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.66666;
+    color: #000000;
+    margin-bottom: 20px;
+  }
+
+  .modal-buttons {
+    display: flex;
+    justify-content: left;
+  }
+
+  .modal-buttons button {
+    margin-right: 14.94px;
+  }
+
+  .modal-buttons button:last-child {
+    margin-right: 0;
+  }
+
+  .watched-button {
+    background-color: #fff;
+    color: #000;
+    display: flex;
+    align-items: center;
+    padding: 10px 10px;
+    transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+      background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 125px;
+    height: 44px;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33333;
+    text-transform: uppercase;
+    text-align: center;
+    border-radius: 5px;
+    border: solid 1px black;
+    cursor: pointer;
+  }
+
+  .watched-button:hover,
+  .watched-button:focus {
+    background-color: #ff6b01;
+    color: #fff;
+    border: none;
+  }
+
+  .queue-button {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding: 10px 10px;
+    transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+      background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 125px;
+    height: 44px;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33333;
+    text-transform: uppercase;
+    text-align: center;
+    color: black;
+    border-radius: 5px;
+    border: solid 1px black;
+    fill: white;
+    cursor: pointer;
+  }
+
+  .queue-button:hover,
+  .queue-button:focus {
+    background-color: #ff6b01;
+    color: white;
+    border: none;
+  }
+}
+
+@media (min-width: 1280px) {
+  .movie-backdrop {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(46, 47, 66, 0.4);
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+      visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .movie-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 806px;
+    height: 558px;
+    border-radius: 0px;
+    background: #fff;
+    cursor: default;
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: row;
+  }
+  .modal-close-btn {
+    display: flex;
+    justify-content: center;
+    min-height: 24px;
+    min-width: 24px;
+    align-items: center;
+    position: absolute;
+    top: 15px;
+    padding: 0;
+    right: 14px;
+    z-index: 1;
+    cursor: pointer;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+      border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+  }
+
+  .modal-close-btn:hover,
+  .modal-close-btn:focus {
+    stroke: var(--orange);
+  }
+
+  .modal-close-icon {
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1),
+      transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    stroke-width: 2px;
+  }
+
+  .modal-close-icon:hover,
+  .modal-close-icon:active {
+    color: var(--orange);
+    fill: var(--orange);
+    transform: rotate(90deg);
+  }
+
+  .is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .movie-image {
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 5px;
+    width: 355px;
+    height: 478px;
+    margin-left: 18px;
+    margin-top: 30px;
+  }
+
+  .movie-container {
+    width: 375px;
+    height: 478px;
+    margin-left: 20px;
+    margin-top: 30px;
+  }
+
+  .movie-title {
+    color: var(--pureblack);
+    font-family: Roboto;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1.172;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+  .movie-description {
+    margin-right: 83px;
+  }
+  .movie-descr {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33333;
+    color: #8c8c8c;
+    margin-bottom: 8px;
+  }
+
+  .movie-about-par {
+    width: 375px;
+    max-height: 184px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.66666;
+    color: #000000;
+  }
+
+  .modal-buttons {
+    display: flex;
+    justify-content: left;
+  }
+
+  .modal-buttons button {
+    margin-right: 10px;
+    margin-left: 4px;
+  }
+
+  .modal-buttons button:last-child {
+    margin-right: 0;
+    margin-left: 5px;
+  }
+
+  .watched-button {
+    background-color: #fff;
+    color: #000;
+    display: flex;
+    align-items: center;
+    padding: 10px 10px;
+    transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+      background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 136px;
+    height: 44px;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33333;
+    text-transform: uppercase;
+    text-align: center;
+    border-radius: 5px;
+    border: solid 1px black;
+    cursor: pointer;
+  }
+
+  .watched-button:hover,
+  .watched-button:focus {
+    background-color: #ff6b01;
+    color: #fff;
+    border: none;
+  }
+
+  .queue-button {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding: 10px 10px;
+    transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+      background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 136px;
+    height: 44px;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33333;
+    text-transform: uppercase;
+    text-align: center;
+    color: black;
+    border-radius: 5px;
+    border: solid 1px black;
+    fill: white;
+    cursor: pointer;
+  }
+
+  .queue-button:hover,
+  .queue-button:focus {
+    background-color: #ff6b01;
+    color: white;
+    border: none;
+  }
+  .remove-buttons {
+    justify-content: start;
+  }
+}
+
+/* przyciski usuwania, Bartosz K */
+
+.remove-buttons {
+  display: flex;
+  gap: 20px;
+  margin-top: -20px;
+  padding-bottom: 40px;
+}
+
+.remove-watched-button:hover,
+.remove-watched-button:focus {
+  background-color: #ff6b01;
+  color: white;
+}
+
+.remove-queue-button,
+.remove-watched-button {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  padding: 10px 10px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100px;
+  height: 30px;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 8px;
+  line-height: 1.33333;
+  text-align: center;
+  color: black;
+  border-radius: 5px;
+  border: solid 1px black;
+  fill: white;
+  cursor: pointer;
+}
+
+.remove-queue-button:hover,
+.remove-queue-button:focus {
+  background-color: #ff6b01;
+  color: white;
+}
+
+@media (min-width: 1280px) {
+  .remove-buttons {
+    margin-left: 4px;
+    display: flex;
+    gap: 27px;
+  }
+
+  .remove-queue-button,
+  .remove-watched-button {
+    width: 130px;
+    height: 35px;
+    font-size: 9px;
+  }
+}
