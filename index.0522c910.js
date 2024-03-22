@@ -595,19 +595,14 @@ queueButton.addEventListener("click", ()=>{
         if (!isMovieInQueue(movie)) {
             if (!isMovieInWatchedList(movie)) {
                 addToQueue(movie);
-                console.log("Movie added to queue.", movie);
                 displayNotification("Movie added to queue.");
-            } else {
-                console.log("Movie already in watched list. Cannot add to queue.");
-                displayNotification("Movie already in watched list. Cannot add to queue.");
-            }
+            } else displayNotification("Movie already in watched list. Cannot add to queue.");
         } else {
             removeFromQueue(movie);
-            console.log("Movie removed from queue.", movie);
             displayNotification("Movie removed from queue.");
         }
         updateQueueButton(movie);
-    } else console.log("No movie data found in session storage.");
+    }
 });
 function isMovieInWatchedList(movie) {
     let moviesOnWatched = JSON.parse(localStorage.getItem("watched")) || [];
@@ -659,19 +654,14 @@ watchedButton.addEventListener("click", ()=>{
         if (!isMovieInWatchedList(movie)) {
             if (!isMovieInQueue(movie)) {
                 addToWatched(movie);
-                console.log("Movie added to watched list.", movie);
                 displayNotification("Movie added to watched list.");
-            } else {
-                console.log("Movie already in queue. Cannot add to watched.");
-                displayNotification("Movie already in queue. Cannot add to watched.");
-            }
+            } else displayNotification("Movie already in queue. Cannot add to watched.");
         } else {
             removeFromWatched(movie);
-            console.log("Movie removed from watched list.", movie);
             displayNotification("Movie removed from watched list.");
         }
         updateWatchedButton(movie);
-    } else console.log("No movie data found in session storage.");
+    }
 });
 function isMovieInQueue(movie) {
     let moviesOnQueue = JSON.parse(localStorage.getItem("queue")) || [];
@@ -733,7 +723,6 @@ async function getMovieDetails(movieId) {
         const data = await response.json();
         return data;
     } catch (error) {
-        console.error("Error while fetching movie details:", error);
         return null;
     }
 }
@@ -760,7 +749,6 @@ async function getPopularMovies(page = 1) {
             totalPages: data.total_pages
         };
     } catch (error) {
-        console.error("Error while fetching data:", error);
         return {
             movies: [],
             totalPages: 0
@@ -1021,7 +1009,6 @@ async function searchMovies(keyword, page = 1) {
             totalPages: data.total_pages
         };
     } catch (error) {
-        console.error("Error while searching movies:", error);
         return {
             movies: [],
             totalPages: 0
@@ -1165,19 +1152,14 @@ document.addEventListener("click", function(event) {
 window.addEventListener("keydown", escExit);
 function cardSelection() {
     const allMovies = document.querySelectorAll(".film-list");
-    console.log("All Movies:", allMovies); // Log allMovies array
     if (allMovies.length) allMovies.forEach((movie)=>{
         movie.addEventListener("click", function(event) {
             const target = event.target.closest(".movie-item");
-            console.log("Target:", target); // Log target element
             if (target) {
                 const movieId = target.dataset.id;
-                console.log("Movie ID:", movieId); // Log movieId
                 const cardPoster = target.querySelector("img").getAttribute("src");
-                console.log("Card Poster:", cardPoster); // Log cardPoster
                 modalImg.setAttribute("src", cardPoster);
                 (0, _pagination.getMovieDetails)(movieId).then((movie)=>{
-                    console.log("Movie Details:", movie); // Log movie details
                     const isInQueue = isMovieInQueue(movie);
                     if (isInQueue) queueButton.textContent = "Remove from Queue";
                     else queueButton.textContent = "Add to Queue";
