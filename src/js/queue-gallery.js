@@ -12,6 +12,8 @@ queueBtn.addEventListener('click', async () => {
   loadMoviesPage(1);
   queueBtn.classList.add('active');
   watchedBtn.classList.remove('active');
+  saveSelectedCategory('queue');
+
 });
 
 //ładowanie strony
@@ -97,3 +99,13 @@ function renderPagination(totalPages, currentPage) {
 
 loadMoviesPage(currentPage);
 
+function saveSelectedCategory(category) {
+  sessionStorage.setItem('selectedCategory', category);
+}
+
+window.addEventListener('load', () => {
+  const selectedCategory = sessionStorage.getItem('selectedCategory');
+  if (selectedCategory === 'queue') {
+    queueBtn.click(); 
+  }
+});

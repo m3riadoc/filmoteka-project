@@ -61,6 +61,10 @@ function removeFromQueue(movie) {
   let moviesOnQueue = JSON.parse(localStorage.getItem('queue')) || [];
   let updatedQueueList = moviesOnQueue.filter(item => item.id !== movie.id);
   localStorage.setItem('queue', JSON.stringify(updatedQueueList));
+  const currentUrl = window.location.href;
+  if (!currentUrl.includes('index.html')) {
+    location.reload(); 
+  }
 }
 
 function displayNotification(message) {

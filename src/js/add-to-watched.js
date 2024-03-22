@@ -61,6 +61,10 @@ function removeFromWatched(movie) {
   let moviesOnWatched = JSON.parse(localStorage.getItem('watched')) || [];
   let updatedWatchedList = moviesOnWatched.filter(item => item.id !== movie.id);
   localStorage.setItem('watched', JSON.stringify(updatedWatchedList));
+  const currentUrl = window.location.href;
+  if (!currentUrl.includes('index.html')) {
+    location.reload(); 
+  }
 }
 
 function displayNotification(message) {

@@ -12,6 +12,7 @@ watchedBtn.addEventListener('click', async () => {
   loadMoviesPage(1);
   queueBtn.classList.remove('active');
   watchedBtn.classList.add('active');
+  saveSelectedCategory('watched');
 });
 
 function loadMoviesPage(page) {
@@ -98,3 +99,15 @@ function renderPagination(totalPages, currentPage) {
 
 
 loadMoviesPage(currentPage);
+
+
+function saveSelectedCategory(category) {
+  sessionStorage.setItem('selectedCategory', category);
+}
+
+window.addEventListener('load', () => {
+  const selectedCategory = sessionStorage.getItem('selectedCategory');
+  if (selectedCategory === 'watched') {
+    watchedBtn.click(); 
+  }
+});
