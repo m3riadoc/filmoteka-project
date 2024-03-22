@@ -14,7 +14,6 @@ export async function getMovieDetails(movieId) {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error while fetching movie details:', error);
     return null;
   }
 }
@@ -38,7 +37,6 @@ async function getPopularMovies(page = 1) {
     footer.classList.remove('hidden');
     return { movies: detailedMovies, totalPages: data.total_pages };
   } catch (error) {
-    console.error('Error while fetching data:', error);
     return { movies: [], totalPages: 0 };
   }
 }
@@ -351,7 +349,6 @@ async function searchMovies(keyword, page = 1) {
     }, 300);
     return { movies: detailedMovies, totalPages: data.total_pages };
   } catch (error) {
-    console.error('Error while searching movies:', error);
     return { movies: [], totalPages: 0 };
   }
 }

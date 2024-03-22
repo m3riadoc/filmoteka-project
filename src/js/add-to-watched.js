@@ -13,20 +13,16 @@ watchedButton.addEventListener('click', () => {
     if (!isMovieInWatchedList(movie)) {
       if (!isMovieInQueue(movie)) { 
         addToWatched(movie);
-        console.log('Movie added to watched list.', movie);
         displayNotification('Movie added to watched list.');
       } else {
-        console.log('Movie already in queue. Cannot add to watched.');
         displayNotification('Movie already in queue. Cannot add to watched.');
       }
     } else {
       removeFromWatched(movie);
-      console.log('Movie removed from watched list.', movie);
       displayNotification('Movie removed from watched list.');
     }
     updateWatchedButton(movie);
   } else {
-    console.log('No movie data found in session storage.');
   }
 });
 

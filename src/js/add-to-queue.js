@@ -13,20 +13,16 @@ queueButton.addEventListener('click', () => {
     if (!isMovieInQueue(movie)) {
       if (!isMovieInWatchedList(movie)) { 
         addToQueue(movie);
-        console.log('Movie added to queue.', movie);
         displayNotification('Movie added to queue.');
       } else {
-        console.log('Movie already in watched list. Cannot add to queue.');
         displayNotification('Movie already in watched list. Cannot add to queue.');
       }
     } else {
       removeFromQueue(movie);
-      console.log('Movie removed from queue.', movie);
       displayNotification('Movie removed from queue.');
     }
     updateQueueButton(movie);
   } else {
-    console.log('No movie data found in session storage.');
   }
 });
 

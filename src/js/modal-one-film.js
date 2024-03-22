@@ -49,24 +49,19 @@ window.addEventListener('keydown', escExit);
 
 function cardSelection() {
   const allMovies = document.querySelectorAll('.film-list');
-  console.log('All Movies:', allMovies); // Log allMovies array
 
   if (allMovies.length) {
     allMovies.forEach(movie => {
       movie.addEventListener('click', function (event) {
         const target = event.target.closest('.movie-item');
-        console.log('Target:', target); // Log target element
 
         if (target) {
           const movieId = target.dataset.id;
-          console.log('Movie ID:', movieId); // Log movieId
 
           const cardPoster = target.querySelector('img').getAttribute('src');
-          console.log('Card Poster:', cardPoster); // Log cardPoster
 
           modalImg.setAttribute('src', cardPoster);
           getMovieDetails(movieId).then(movie => {
-            console.log('Movie Details:', movie); // Log movie details
 
             const isInQueue = isMovieInQueue(movie);
 
