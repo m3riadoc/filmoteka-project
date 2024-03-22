@@ -2,7 +2,7 @@
   "name": "parcel-project-template",
   "version": "1.1.0",
   "description": "",
-  "homepage": "https://github.com/m3riadoc/filmoteka-project/index.html",
+  "homepage": "https://github.com/m3riadoc/filmoteka-project/",
   "scripts": {
     "dev": "parcel src/*.html",
     "build": "parcel build src/*.html --public-url /filmoteka-project/",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/m3riadoc/filmoteka-project/index.html"
+    "url": "git+https://github.com/m3riadoc/filmoteka-project/"
   },
   "keywords": [],
   "author": "Bartosz Kozielski <bartoszkozielski1998@gmail.com>",
